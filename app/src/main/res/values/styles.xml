@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Home screen: shows the boot splash from the very first frame (see BootIntro). -->
+    <style name="Theme.Yeti.Home" parent="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="android:windowDisablePreview">false</item>
+    </style>
+</resources>

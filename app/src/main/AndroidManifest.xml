@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+   >
+    <uses-feature android:name="android.software.leanback" android:required="false"/>
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <!-- Wi-Fi scan results and the connected SSID are only visible with location access. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES"/>
+    <!-- Sound / Date & time pages. WRITE_SETTINGS is an app-op and WRITE_SECURE_SETTINGS a development permission:
+         both are granted over adb (tools/dev.ps1); without them those toggles hand off to Android TV Settings. -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"/>
+    <!-- Display page: the Amlogic library announces HDMI mode changes to all users (development permission, adb grant). -->
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS"/>
+    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+    <application android:label="@string/app_name" android:icon="@mipmap/ic_launcher"
+        android:banner="@drawable/banner" android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"
+        android:allowBackup="false">
+        <!-- Amlogic vendor library: picture brightness/contrast/colour (see Amlogic.java). Optional. -->
+        <uses-library android:name="droidlogic.software.core" android:required="false"/>
+        <activity android:name=".MainActivity" android:theme="@style/Theme.Yeti.Home" android:launchMode="singleTask" android:stateNotNeeded="true"
+            android:clearTaskOnLaunch="true" android:resumeWhilePausing="true" android:screenOrientation="landscape"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|uiMode"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.HOME"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".AppsActivity" android:label="All apps" android:exported="false" android:screenOrientation="landscape"/>
+        <activity android:name=".AboutActivity" android:label="About Yeti TV" android:exported="false" android:screenOrientation="landscape"/>
+        <activity android:name=".WifiActivity" android:label="Wi-Fi" android:exported="false" android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name=".NetworkActivity" android:label="Network" android:exported="false" android:screenOrientation="landscape"/>
+        <activity android:name=".DisplayActivity" android:label="Display" android:exported="false" android:screenOrientation="landscape"/>
+        <activity android:name=".SoundActivity" android:label="Sound" android:exported="false" android:screenOrientation="landscape"/>
+        <activity android:name=".DateTimeActivity" android:label="Date &amp; time" android:exported="false" android:screenOrientation="landscape"/>
+        <activity android:name=".AppSettingsActivity" android:label="Apps" android:exported="false" android:screenOrientation="landscape"/>
+    </application>
+</manifest>

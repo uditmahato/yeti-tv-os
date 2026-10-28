@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Home window background = last boot-animation frame (same navy, same logo, same place), so the switch from the
+     boot animation to the launcher shows no black frame. Regenerate splash_logo.png with branding/make_bootanimation.py. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item><color android:color="#001031"/></item>
+    <item><bitmap android:src="@drawable/splash_logo" android:gravity="center"/></item>
+</layer-list>
