@@ -1,4 +1,4 @@
-# Yeti TV OS — Developer Guide
+# Yeti TV OS Developer Guide
 
 Notes for working on Yeti TV OS: how to connect to a box, build and test, how the launcher is put together, and
 the things about the hardware that are easy to get wrong.
@@ -26,7 +26,7 @@ adb devices
 adb root          # userdebug: everything after this runs as root
 ```
 
-After a reboot the box disappears from adb for up to a minute while USB comes back up — wait for `adb devices`
+After a reboot the box disappears from adb for up to a minute while USB comes back up. Wait for `adb devices`
 rather than assuming it hung.
 
 ## Build and test loop
@@ -36,7 +36,7 @@ powershell -ExecutionPolicy Bypass -File tools\dev.ps1           # build, instal
 powershell -ExecutionPolicy Bypass -File tools\dev.ps1 -NoBuild  # reinstall the last build
 ```
 
-`dev.ps1` installs the APK, AOT-compiles it (`cmd package compile -m speed` — the home screen's cold start is the last
+`dev.ps1` installs the APK, AOT-compiles it (`cmd package compile -m speed`, because the home screen's cold start is the last
 step of boot), grants the permissions below, makes Yeti TV OS the home app and saves screenshots to `shots/`.
 Check the screenshots before calling a UI change done. `shots/` is not committed: it contains Wi-Fi names, IP and
 MAC addresses.
@@ -86,14 +86,14 @@ Source: `app/src/main/java/tv/yeti/launcher/`.
 | `WifiActivity`, `Wifi` | Wi-Fi picker: on/off, connection details, live scan list, password entry above the on-screen keyboard. |
 | `Amlogic` | Display controls through the vendor library (below). |
 | `AppsActivity`, `Apps` | All-apps grid; app listing, launching and the hidden-package list. |
-| `AboutActivity` | Version, credit and live device information. The credit *Udit Kumar Mahato — Founder, Yeti TV* must stay. |
+| `AboutActivity` | Version, credit and live device information. The credit *Udit Kumar Mahato, Founder, Yeti TV* must stay. |
 
 ### Two settings apps
 
 The base firmware has two settings apps:
 
-- `com.android.tv.settings` — the full Android TV settings. **Always open this one.**
-- `com.android.settings` — the stock firmware's simplified five-tile screen. It also answers generic
+- `com.android.tv.settings`: the full Android TV settings. **Always open this one.**
+- `com.android.settings`: the stock firmware's simplified five-tile screen. It also answers generic
   `android.settings.*` intents, so a plain `startActivity(new Intent(Settings.ACTION_…))` lands there. Don't remove
   it (other system screens depend on it); just never route to it.
 
@@ -103,13 +103,13 @@ explicitly, falling back to its main screen. `Ui.openTvSettings(context, class)`
 ## Display controls
 
 `Amlogic.java` calls the vendor library `droidlogic.software.core` (`/vendor/framework/droidlogic.jar`) by
-reflection, so the app still runs on boxes without it — the controls just hide. Its `SystemControlManager` talks to
+reflection, so the app still runs on boxes without it; the controls just hide. Its `SystemControlManager` talks to
 the root `systemcontrol` service, which does the privileged work.
 
 **Brightness, contrast, colour** write the amvecm *post-blend* registers, which affect the whole picture (menus and
 video):
 
-| Slider (0–100, 50 = standard) | Register | Range |
+| Slider (0 to 100, 50 = standard) | Register | Range |
 |---|---|---|
 | Brightness | `/sys/class/amvecm/brightness2` | −255…255 |
 | Contrast | `/sys/class/amvecm/contrast2` | −127…127 |
@@ -141,7 +141,7 @@ enforcing firmware would need a platform-signed or privileged build.
 | Launcher splash | `drawable/splash.xml` + `drawable-nodpi/splash_logo.png` | Same frame as the boot animation. |
 
 Android never scales boot animation frames, so the animation is full 1920×1080 and every frame is the power-on logo
-plus a "Starting Yeti TV OS" line — the logo never moves between stages. 15 fps keeps 1080p PNG decoding smooth on
+plus a "Starting Yeti TV OS" line, so the logo never moves between stages. 15 fps keeps 1080p PNG decoding smooth on
 the A35. The launcher's window background is the same frame, so there is no black flash when the animation stops;
 `BootIntro` then slides the splash away and brings the home rows in from the right. It only runs within three
 minutes of boot; to replay it:

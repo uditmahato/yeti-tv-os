@@ -31,7 +31,7 @@ import android.widget.TextView;
  * s(px) converts a design pixel to a real pixel, so the UI looks identical on 720p, 1080p and 4K,
  * whatever density the box reports, and never overflows.
  *
- * Look: Google TV style — near-black neutral surfaces, white focus ring + zoom, pills that turn white
+ * Look: Google TV style. Near-black neutral surfaces, white focus ring + zoom, pills that turn white
  * when focused, Yeti blue used only as an accent.
  */
 final class Ui {

@@ -8,7 +8,7 @@ local.properties
 *.apk
 *.aab
 
-# Signing — never commit keys or passwords (see keystore.properties.example)
+# Signing: never commit keys or passwords (see keystore.properties.example)
 keystore.properties
 *.keystore
 *.jks

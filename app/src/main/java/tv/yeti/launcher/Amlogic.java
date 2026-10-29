@@ -9,7 +9,7 @@ import android.util.Log;
  * and runs without the library.
  *
  * Picture (brightness / contrast / colour) uses the amvecm "post-blend" adjustment (brightness2, contrast2,
- * saturation_hue_post), which applies to the whole HDMI picture — menus and video. (The vendor's SetBrightness only
+ * saturation_hue_post), which applies to the whole HDMI picture, menus and video. (The vendor's SetBrightness only
  * touches the video layer, brightness1, which is why it showed no change on the home screen.) Those registers
  * reset at boot, so values are kept in SharedPreferences (commit(), so a reboot right after a change keeps it) and re-applied by {@link #applySaved} from MainActivity.
  * Slider values are 0..100 with 50 = standard (register 0).

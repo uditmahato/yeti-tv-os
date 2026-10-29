@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * Display: HDMI resolution (with a 15 s "keep it?" auto-revert, like Android TV), screen size for TVs that cut
- * off the edges, and picture brightness / contrast / colour — all through the Amlogic vendor service (Amlogic.java).
+ * off the edges, and picture brightness / contrast / colour, all through the Amlogic vendor service (Amlogic.java).
  */
 public class DisplayActivity extends SettingsPage {
 

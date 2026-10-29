@@ -242,7 +242,7 @@ public class WifiActivity extends Activity {
         return p;
     }
 
-    /** List row: Google TV settings style — transparent, turns white with dark text when focused. */
+    /** List row: Google TV settings style: transparent, turns white with dark text when focused. */
     private View netRow(Wifi.Net n) {
         LinearLayout r = new LinearLayout(this);
         r.setGravity(Gravity.CENTER_VERTICAL);

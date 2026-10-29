@@ -19,7 +19,7 @@ import android.widget.TextView;
  *
  * The boot animation (branding/make_bootanimation.py) is the power-on logo plus a "Starting Yeti TV OS" line. The
  * launcher's window background (drawable/splash.xml) is the same logo on the same navy, and this overlay repeats it
- * with the same pulsing dots, so nothing changes on screen when Android swaps the animation for the launcher —
+ * with the same pulsing dots, so nothing changes on screen when Android swaps the animation for the launcher:
  * no black frame. Once home has drawn, the splash slides off to the left while fading and the home rows glide in
  * from the right, one after another.
  *

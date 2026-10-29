@@ -41,7 +41,7 @@ import java.util.Set;
  *
  * Design budget (height 972 inside safe area):
  *   top bar 64 | 28 | hero (rest, 284 min) | 36 | "Your apps" 30+16+171 | "Get more to watch" 8+30+16+171 (hidden when
- *   every streaming app is installed — the hero grows instead) | 8 | "Settings" 30+16+64
+ *   every streaming app is installed; the hero grows instead) | 8 | "Settings" 30+16+64
  * App rows are 7 equal slots of 16:9 cards (226x127); the slot's extra 44px holds the app name shown under the
  * focused card.
  */
